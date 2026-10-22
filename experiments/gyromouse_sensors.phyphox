@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phyphox version="1.19" locale="en">
+    <title>Gyromouse Sensors</title>
+    <category>Tools</category>
+    <description>Low-overhead gyroscope and accelerometer streams for Gyromouse. Sensor rate strategy is request; no extra phyphox averaging or generated-rate resampling is configured.</description>
+    <data-containers>
+        <container size="8192">gt</container><container size="8192">gx</container><container size="8192">gy</container><container size="8192">gz</container>
+        <container size="8192">at</container><container size="8192">ax</container><container size="8192">ay</container><container size="8192">az</container>
+        <container size="8192">lat</container><container size="8192">lax</container><container size="8192">lay</container><container size="8192">laz</container>
+    </data-containers>
+    <input>
+        <sensor type="gyroscope" rate="0.0" rateStrategy="request" average="false" ignoreUnavailable="true">
+            <output component="x">gx</output><output component="y">gy</output><output component="z">gz</output><output component="t">gt</output>
+        </sensor>
+        <sensor type="accelerometer" rate="0.0" rateStrategy="request" average="false" ignoreUnavailable="true">
+            <output component="x">ax</output><output component="y">ay</output><output component="z">az</output><output component="t">at</output>
+        </sensor>
+        <sensor type="linear_acceleration" rate="0.0" rateStrategy="request" average="false" ignoreUnavailable="true">
+            <output component="x">lax</output><output component="y">lay</output><output component="z">laz</output><output component="t">lat</output>
+        </sensor>
+    </input>
+    <views>
+        <view label="Sensor streams">
+            <info label="Gyroscope (rad/s), accelerometer with gravity (m/s²), and linear acceleration (m/s²). No extra sample-rate generation or averaging is configured."/>
+            <separator/><info label="For the best capture behavior, enable phyphox remote access and keep the phone and computer on the same local network."/>
+        </view>
+    </views>
+    <export>
+        <set name="Gyroscope"><data name="Experiment time (s)">gt</data><data name="Angular velocity X (rad/s)">gx</data><data name="Angular velocity Y (rad/s)">gy</data><data name="Angular velocity Z (rad/s)">gz</data></set>
+        <set name="Accelerometer"><data name="Experiment time (s)">at</data><data name="Acceleration X (m/s²)">ax</data><data name="Acceleration Y (m/s²)">ay</data><data name="Acceleration Z (m/s²)">az</data></set>
+        <set name="Linear acceleration"><data name="Experiment time (s)">lat</data><data name="Linear acceleration X (m/s²)">lax</data><data name="Linear acceleration Y (m/s²)">lay</data><data name="Linear acceleration Z (m/s²)">laz</data></set>
+    </export>
+</phyphox>
